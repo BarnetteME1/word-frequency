@@ -1,20 +1,12 @@
-with open("sample.txt") as hounds_of_the_baskerville:
-    book = hounds_of_the_baskerville.read()
-
-from string import punctuation
-from string import whitespace
-
-def words(book):
-    for char in book:
-        if char in punctuation:
-            book = book.replace(char, '')
-        if char in whitespace:
-            book = book.replace(char, ' ')
-    return book.lower().split()
-
 def word_frequency(book):
     book = words(book)
     word_count = {}
+    n = 0
+    while n < len(book):
+        for word in useless_words:
+            if word in book[n]:
+                book.remove(book[n])
+        n+=1
     for word in book:
         if word not in word_count:
             word_count[word] = 1
@@ -31,7 +23,9 @@ def top_twenty(book):
     while n <= 20:
         top_twenty.append(count_word[n])
         n+=1
-    return top_twenty
+    return dict(top_twenty)
 
-top_twenty(book)
-#print(word_list)
+#words(book)
+#word_frequency(book)
+#top_twenty(book)
+print(top_twenty(book))
