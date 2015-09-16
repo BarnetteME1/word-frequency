@@ -1,3 +1,10 @@
+with open("sample.txt") as hounds_of_the_baskerville:
+    book = hounds_of_the_baskerville.read()
+
+from string import punctuation
+from string import whitespace
+from operator import itemgetter
+
 useless_words = ['a', 'able', 'about', 'across', 'after', 'all', 'almost', 'also', 'am',
                  'among', 'an', 'and', 'any', 'are', 'as', 'at', 'be', 'because', 'been',
                  'but', 'by', 'can', 'cannot','could','dear','did','do','does','either'
