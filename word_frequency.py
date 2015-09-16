@@ -1,10 +1,3 @@
-with open("sample.txt") as hounds_of_the_baskerville:
-    book = hounds_of_the_baskerville.read()
-
-from string import punctuation
-from string import whitespace
-from operator import itemgetter
-
 useless_words = ['a', 'able', 'about', 'across', 'after', 'all', 'almost', 'also', 'am',
                  'among', 'an', 'and', 'any', 'are', 'as', 'at', 'be', 'because', 'been',
                  'but', 'by', 'can', 'cannot','could','dear','did','do','does','either'
@@ -17,7 +10,8 @@ useless_words = ['a', 'able', 'about', 'across', 'after', 'all', 'almost', 'also
                  'the','their','them','then','there','these','they','this','tis',
                  'to','too','twas','us','wants','was','we','were','what','when',
                  'where','which','while','who','whom','why','will','with','would',
-                 'yet','you','your']
+                 'yet','you','your','more','before','man','see','very','now',
+                 'out','over','upon','well','here','came','come','much']
 
 def words(book):
     for char in book:
@@ -25,17 +19,16 @@ def words(book):
             book = book.replace(char, '')
         if char in whitespace:
             book = book.replace(char, ' ')
-    return book.lower().split()
+    book = book.lower().split()
+    new_book = []
+    for word in book:
+        if word not in useless_words:
+            new_book.append(word)
+    return(new_book)
 
 def word_frequency(book):
     book = words(book)
     word_count = {}
-    n = 0
-    while n < len(book):
-        for word in useless_words:
-            if word in book[n]:
-                book.remove(book[n])
-        n+=1
     for word in book:
         if word not in word_count:
             word_count[word] = 1
